@@ -7,30 +7,155 @@
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <title>SA1 - Project</title>
+    <title>Sentiment Analysis</title>
 </head>
 <body>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .glow{
+            color: white;
+            font-weight: bold;
+            font-family: monospace;
+            cursor: pointer;
+            text-shadow: 0 0 0px rgb(255, 255, 255),
+                        0 0 1px rgb(255, 255, 255), 
+                        0 0 2px rgb(255, 255, 255);
+        }
+        .glow-green{
+            color: rgb(0, 255, 0);
+            text-shadow: 0 0 0px rgb(0, 255, 0),
+                        0 0 1px rgb(0, 255, 0), 
+                        0 0 2px rgb(0, 255, 0);
+        }
+        .glow-red{
+            color: red;
+            text-shadow: 0 0 0px red,
+                        0 0 1px red, 
+                        0 0 2px red;
+        }
+        .glow{
+            transition: .5s linear
+        }
+        .container{
+            background-color: rgb(32, 0, 32);
+            height: 100vh;
+            text-align: center;
+            padding-top:100px;
+            position: relative;
+        }
+        .panel{
+            position: absolute;
+            left:50%;
+            transform: translate(-50%,0);
+        }
+        .footer{
+            position:absolute;
+            left:50%;
+            transform: translate(-50%,0);
+            bottom:5%;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(0, 255, 0);
+            text-shadow: 0 0 0px #00ff00,
+                        0 0 1px #00ff00, 
+                        0 0 2px #00ff00;
+        }
+        a:hover{
+            color: red;
+            text-shadow: 0 0 0px red,
+                        0 0 1px red,
+                        0 0 2px red;
+
+        }
+        .panel-heading{
+            padding-bottom: 30px;
+        }
+        input{
+            text-align: center;
+            font-size: 25px;
+        }
+        input[type=text]{
+            height:50px;
+            width:75%;
+            margin: auto;
+            display: block;
+            margin-bottom: 30px;
+        }
+        input[type=submit]{
+            padding:10px 30px 10px 30px;
+            color: rgb(32, 0, 32);
+            border-width: 0px;
+            margin-bottom: 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            box-shadow: 0 0 0px white,
+                        0 0 1px white,
+                        0 0 2px white;
+        }
+        @media only screen and (max-width: 767px){
+            input[type=text]{
+                width:90%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            input{
+                text-align: left;
+                font-size: 20px;
+            }
+            .footer{
+                font-size: 14px;
+                width:100%;
+                bottom: 10%;
+                color: white!important;
+            }
+        }
+    </style>
     <div class="container">
-        <h1>SA1 - Project</h1>
-        <form action="/" method="POST">
-            <input type="text" name="my-text" placeholder="Enter the text">
-            <input type="submit">
-        </form>
-        {% if the_text %}
-            <style>
-                .result_color{
-                    color: green;
-                }
-            </style>
-            {% if the_result=="Negative" %}
-                <style>
-                    .result_color{
-                        color: red;
-                    }
-                </style>
-            {%endif%}
-            <h2>"{{the_text}}" is <span class="result_color">{{the_result}}</span></h2>
-        {%endif%}
+        <div class="row col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1><span class="glow glow-green">Sentiment</span> <span class="glow glow-red">Analysis</span></h1>
+                </div>
+                <div class="panel-body">
+                    <form action="/" method="POST">
+                        <input type="text" name="my-text" placeholder="Enter the text">
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    {% if the_text %}
+                        <style>
+                            .result_color{
+                                color: #00ff00;
+                                text-shadow: 0 0 0px #00ff00,
+                                            0 0 1px #00ff00, 
+                                            0 0 2px #00ff00;
+                            }
+                        </style>
+                        {% if the_result=="Negative" %}
+                            <style>
+                                .result_color{
+                                    color: red;
+                                    text-shadow: 0 0 0px red,
+                                                0 0 1px red, 
+                                                0 0 2px red;
+                                }
+                            </style>
+                        {%endif%}
+                        <h2 class="glow">"{{the_text}}" is <span class="result_color">{{the_result}}</span></h2>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+        <div class="footer" style="color: white;">Developed with ðŸ’™ by <a href="https://aburifat.com">Abu Rifat Muhammed Al Hasib</a></div>
     </div>
     <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
