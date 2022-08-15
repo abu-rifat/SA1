@@ -13,13 +13,6 @@ def hello():
         return render_template("index.html",the_text=my_sentiment[0],the_result=my_sentiment[1])
     return render_template("index.html")
     
-"""
-@app.route("/sub",methods=['POST'])
-def submit():
-    if request.method == "POST":
-        my_text = request.form["my-text"]
-    return render_template("sub.html",text=my_text)
-"""
 
 if __name__=="__main__":
     app.run(debug=True)
