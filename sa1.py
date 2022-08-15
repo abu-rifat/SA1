@@ -4,9 +4,9 @@ import numpy as np
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
 import os
-import nltk
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+#import nltk
+#nltk.download('wordnet')
+#nltk.download('omw-1.4')
 
 emojis = {':)': 'smile', ':-)': 'smile', ';d': 'wink', ':-E': 'vampire', ':(': 'sad', 
           ':-(': 'sad', ':-<': 'sad', ':P': 'raspberry', ':O': 'surprised',
@@ -61,11 +61,11 @@ def preprocess(textdata):
     return processedText
 
 def load_models():
-    file_name=os.path.join(os.getcwd(),'vectoriser-ngram-(1,2).pickle')
+    file_name=os.path.join(os.getcwd(),'models/vectoriser-ngram-(1,2).pickle')
     file = open(file_name, 'rb')
     vectoriser = pickle.load(file)
     file.close()
-    file = open('Sentiment-LR.pickle', 'rb')
+    file = open('models/Sentiment-LR.pickle', 'rb')
     LRmodel = pickle.load(file)
     file.close()
     print("Done loading models")
